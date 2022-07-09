@@ -138,6 +138,35 @@ footer {
   opacity: 80%;
 }
 
+#nextFiveLaunchesList,
+#lastFiveLaunchesList {
+  margin-bottom: 10px;
+}
+
+.agencyImage img {
+  max-height: 170px;
+  min-height: 170px;
+  /* max-width: 170px;
+min-width: 170px; */
+}
+
+.agencyImage {
+  background-color: black !important;
+  opacity: 0.8;
+}
+
+.card .card-image .card-title {
+  font-size: 2vw;
+}
+
+.card-content {
+  color: white;
+}
+
+.timer-div {
+  color: white;
+}
+
 /* resposive elements style */
 @media (max-width: 680px) {
   header {
