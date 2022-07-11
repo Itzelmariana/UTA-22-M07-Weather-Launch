@@ -123,3 +123,46 @@ function weatherForecast() {
     });
 }
 function cityList() {}
+
+function displayLaunches(response) {
+  var results = response.data.results;
+  var searchHTML = ``;
+
+  for (i = 0; i < results.length; i++) {
+    searchHTML += launchComponent(results[i]);
+  }
+  //searchHTML = searchHTML + `</span>`;
+
+  document.querySelector("#searchresults").innerHTML = searchHTML;
+}
+
+function searchInfo() {
+  var apiURL = "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/";
+  axios.get(apiURL).then(displayLaunches);
+}
+//  var searchElement = document.querySelector("#searchresults");
+//  searchElement.innerHTML = searchHTML;
+
+// for ...
+//    htmlText += launchComponent(array[i])
+function launchComponent(launchInfo) {
+  var searchHTML = `  
+    <div class="row customCard">
+      <div class="col s3">
+        <img class="agencyImg" src="${launchInfo.image}" /> 
+      </div>
+      <div class="col s5">
+        <p>Company:<span>${launchInfo.launch_service_provider.name}</span></p>
+        <p>Name:<span>${launchInfo.name}</span></p>
+        <p>Date:<span>${launchInfo.net}</span></p>
+        <p>Location:<span>${launchInfo.pad.location.name}</span></p>  
+      </div>
+      <div class="col s3">
+        <p>Weather:<span id="weather"></span></p>
+      </div> 
+      <div class="col s1">
+        <a href="#" class="saveBtn"><i class="material-icons favoriteButtons">add</i></a>
+      </div>  
+    </div>`;
+  return searchHTML;
+}
